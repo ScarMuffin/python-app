@@ -66,8 +66,10 @@
   Then we should use ```docker build . -t pysashok``` to build image. 
   
   And we can see it using ```docker images```
+  <img src="https://github.com/ScarMuffin/python-app/blob/84d68492f202045058301e09246b37663564beb5/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.17.04.png" border="0"/></a>
   
   And then we can test it using ```docker run pysashok```
   
   And we can see it works in our terminal:
+    <img src="https://github.com/ScarMuffin/python-app/blob/84d68492f202045058301e09246b37663564beb5/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.19.16.png" border="0"/></a>
   
