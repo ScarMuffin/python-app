@@ -103,3 +103,5 @@
   ```
   And we also can see it in terminal:
       <img src="https://github.com/ScarMuffin/python-app/blob/a8e3768612aaa41c04d961cba7d5e37a15b79c6f/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.30.18.png" border="0"/></a>
+      
+   <h1>4. Deploy the application into the K8S cluster </h1>
