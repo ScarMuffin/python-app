@@ -202,3 +202,8 @@ And for the recources limites we should have
             cpu: "100m"
 ```
 In our deployment.yml
+
+To emulate rollingupdate I changed replicas to 10 to see how it works and changed image to sashokrar/pysashok which I also have in my docker repository and now you can see it
+      <img src="https://github.com/ScarMuffin/python-app/blob/1ae64145f047c94adc489012d5e9639989c85556/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2012.15.45.png" border="0"/></a>
+
+
