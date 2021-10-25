@@ -209,3 +209,21 @@ To emulate rollingupdate I changed replicas to 10 to see how it works and change
 
 <h3> * Create a “Service” object which exposes Pods with application outside the K8S cluster in order to access each of the replicas through the single IP address/DNS name. </h3>
 
+To create our service we should use command:
+```
+kubectl expose deploy/sashokpy --type=LoadBalancer
+```
+Then we can check it using command:
+```
+kubectl get svc
+```
+And we can get the link using:
+```
+minikube service sashokpy
+```
+<img src="https://github.com/ScarMuffin/python-app/blob/4dc507b19aba28b6b872f45453c24de25624d122/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2013.30.15.png" border="0"/></a>
+
+And then you can curl link
+<img src="https://github.com/ScarMuffin/python-app/blob/08eb3f245c075a0b78ade7e1d6b6b13e2046ec20/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2013.34.46.png" border="0"/></a>
+And here we can see different hostnames that shows us that our LoadBalancer works.
+
