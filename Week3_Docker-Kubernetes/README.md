@@ -73,3 +73,33 @@
   And we can see it works in our terminal:
     <img src="https://github.com/ScarMuffin/python-app/blob/84d68492f202045058301e09246b37663564beb5/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.19.16.png" border="0"/></a>
   
+  <h1>3. Setup K8S cluster using Minikube(1 master + 1 worker node is enough)</h1>
+  
+  At first we should install minikube:
+  ```
+  sudo apt update -y
+  sudo apt upgrade -y
+  wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+  sudo chmod +x /usr/local/bin/minikube
+  ```
+  
+  Then we should install kubectl tool:
+  ```
+  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  
+  chmod +x ./kubectl
+  
+  sudo mv ./kubectl /usr/local/bin
+  ```
+  
+  Then we can start our minikube with 2 nodes using:
+  ```
+  minikube start --nodes=2
+  ```
+  And we can check that we have 2 nodes working using command:
+  ```
+  kubectl get nodes
+  ```
+  And we also can see it in terminal:
+      <img src="https://github.com/ScarMuffin/python-app/blob/a8e3768612aaa41c04d961cba7d5e37a15b79c6f/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.30.18.png" border="0"/></a>
