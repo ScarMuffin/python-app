@@ -32,7 +32,7 @@
   
   For this task I made two Dockerfiles: one using pip install -r requirements.txt and other one just python setup.py install for task with k8s it will be useful.
   
-  So first one is:
+  So first one is (Using pip):
   
 ```
   FROM python:3.6-alpine
@@ -47,7 +47,9 @@
   USER sashok
   CMD ["python", "-m", "demo"]
   ```
-  Second is:
+  
+  Second is (Without pip):
+  
   ```
   FROM python:3.6-alpine
 
@@ -60,3 +62,9 @@
   USER sashok
   CMD ["python3", "-m", "demo"]                             
   ```
+  
+  Then we should use ```docker build . -t pysashok``` to build image. 
+  
+  And we can see it using ```docker images```
+  
+  And then we can test it using ```docker run pysashok```
