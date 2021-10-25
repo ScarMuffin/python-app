@@ -105,3 +105,100 @@
       <img src="https://github.com/ScarMuffin/python-app/blob/a8e3768612aaa41c04d961cba7d5e37a15b79c6f/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2011.30.18.png" border="0"/></a>
       
    <h1>4. Deploy the application into the K8S cluster </h1>
+   
+   <h3> Create Deployment .yaml file with containerized application 
+ The deployment requires 3 replicas, “RollingUpdate” strategy. 
+ Emulate the “RollingUpdate” strategy by updating docker image. Provide screenshots. Define the liveness and readiness probes to /health endpoint and 8080 port, resources(requests/limits)</h3>
+ 
+ For that task we should create deployment.yml with content in it:
+ ```
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sashokpy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sashokpy
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: sashokpy
+    spec:
+      containers:
+      - name: sashokpy
+        image: sashokrar/sashokpy
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+ ```
+
+So to create 3 replicas we should have
+```
+spec:
+  replicas: 3
+  ```
+In our deployment.yml
+
+For RollingUpdate strategy we should have
+```
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+    type: RollingUpdate
+```
+In our deployment.yml
+
+For liveness and readness probe we should have
+```
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+```
+In our deployment.yml
+
+And for the recources limites we should have
+```
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+```
+In our deployment.yml
