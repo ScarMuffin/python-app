@@ -227,3 +227,33 @@ And then you can curl link
 <img src="https://github.com/ScarMuffin/python-app/blob/08eb3f245c075a0b78ade7e1d6b6b13e2046ec20/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2013.34.46.png" border="0"/></a>
 And here we can see different hostnames that shows us that our LoadBalancer works.
 
+<h3>Specify PodDistruptionBudget which defines that only 1 replica can be down. </h3>
+
+To add PodDistruptionBudget we should create YML file for example PodDistruptionBudget.yml
+And put there:
+
+```
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: sashok-pdb
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: sashokpy
+```
+
+After that we should apply it
+```
+kubectl apply -f PodDistruptionBudget.yml
+
+```
+
+And now we can check it using command
+```kubectl get pods```
+And here we see it
+<img src="https://github.com/ScarMuffin/python-app/blob/a56f6223f1fd35f81bc02b65649986f7f1a5e371/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2021.34.39.png" border="0"/></a>
+
+
+
