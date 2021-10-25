@@ -68,3 +68,6 @@
   And we can see it using ```docker images```
   
   And then we can test it using ```docker run pysashok```
+  
+  And we can see it works in our terminal:
+  
