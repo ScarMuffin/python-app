@@ -207,3 +207,5 @@ To emulate rollingupdate I changed replicas to 10 to see how it works and change
       <img src="https://github.com/ScarMuffin/python-app/blob/1ae64145f047c94adc489012d5e9639989c85556/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2012.15.45.png" border="0"/></a>
 
 
+<h3> * Create a “Service” object which exposes Pods with application outside the K8S cluster in order to access each of the replicas through the single IP address/DNS name. </h3>
+
