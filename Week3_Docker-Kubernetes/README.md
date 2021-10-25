@@ -251,7 +251,11 @@ kubectl apply -f PodDistruptionBudget.yml
 ```
 
 And now we can check it using command
-```kubectl get pods```
+
+```
+kubectl get pods
+```
+
 And here we see it
 <img src="https://github.com/ScarMuffin/python-app/blob/a56f6223f1fd35f81bc02b65649986f7f1a5e371/Week3_Docker-Kubernetes/Screenshot%202021-10-25%20at%2021.34.39.png" border="0"/></a>
 
