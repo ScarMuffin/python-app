@@ -253,7 +253,7 @@ kubectl apply -f PodDistruptionBudget.yml
 And now we can check it using command
 
 ```
-kubectl get pods
+kubectl get pdb
 ```
 
 And here we see it
