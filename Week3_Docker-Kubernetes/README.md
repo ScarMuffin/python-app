@@ -34,7 +34,8 @@
   
   So first one is:
   
-```FROM python:3.6-alpine
+```
+  FROM python:3.6-alpine
 
   RUN adduser --disabled-password sashok
   COPY . /
@@ -48,7 +49,6 @@
   ```
   Second is:
   ```
-  FROM python:3.6-alpine
   FROM python:3.6-alpine
 
   RUN apk add --no-cache g++
