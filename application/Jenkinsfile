@@ -1,11 +1,12 @@
 pipeline {
+    agent any
     tools{
         docker "docker"
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog')
             }
         }
     }
