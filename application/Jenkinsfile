@@ -1,9 +1,13 @@
 node {
     checkout scm
-    env.docker = tool 'docker'
-    env.PATH="${env.docker}/bin:${env.PATH}"
+     stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+    stage('Building image'){
     def dockerfile = 'Dockerfile'
     def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
+    }
 }
    // docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog') {
 
