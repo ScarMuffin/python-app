@@ -3,7 +3,7 @@ node {
      stage('Initialize'){
         def dockerHome = tool 'myDocker'
         env.PATH = "${dockerHome}/bin:${env.PATH}"
-//        sh 'systemctl start docker'
+        sh 'service docker start'
     }
     stage('Building image'){
     def dockerfile = 'Dockerfile'
