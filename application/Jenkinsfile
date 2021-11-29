@@ -1,12 +1,13 @@
-node {
-    checkout scm
-
-    docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog') {
-
-       def customImage = docker.build("my-image:${env.BUILD_ID}", "-f Dockerfile ./application")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
+pipeline {
+    agent {
+        docker { image 'node:14-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
 
