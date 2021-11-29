@@ -1,43 +1,13 @@
-pipeline {
-  environment {
-    imagename = "yenigul/hacicenkins"
-    registryCredential = 'yenigul-dockerhub'
-    dockerImage = ''
-  }
-  agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git([url: 'https://github.com/ismailyenigul/hacicenkins.git', branch: 'master', credentialsId: 'ismailyenigul-github-user-token'])
+node {
+    checkout scm
 
-      }
-    }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build imagename
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
+    docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog') {
 
-          }
-        }
-      }
-    }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $imagename:$BUILD_NUMBER"
-         sh "docker rmi $imagename:latest"
+       def customImage = docker.build("my-image:${env.BUILD_ID}", "-f Dockerfile ./application")
 
-      }
+        /* Push the container to the custom Registry */
+        customImage.push()
     }
-  }
 }
 
    // docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog') {
