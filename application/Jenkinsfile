@@ -1,5 +1,7 @@
 node {
     checkout scm
+    env.docker = tool 'docker'
+    env.PATH="${env.docker}/bin:${env.PATH}"
     def dockerfile = 'Dockerfile'
     def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
 }
