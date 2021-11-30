@@ -17,7 +17,7 @@ node ('jenkins-docker'){
             def customImage = docker.build("default-docker-virtual/sashokpy:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
             customImage.push()
            }
-     //  customImage.push()
+     //  customImage.push()asdasdads
        }
 //    def dockerfile = 'Dockerfile'
 //    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./") 
