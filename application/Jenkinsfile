@@ -10,13 +10,12 @@ node ('jenkins-docker'){
     }
     stage('Building image') {
        container('docker') {
-           docker.withRegistry('https://sashok.jfrog.io, 'jfrog') 
-                               {
+           docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
         //docker.withRegistrywithDockerRegistry(registry: [url: 'https://sashok.jfrog.io', credentialsId: 'jfrog']) {
 
             def dockerfile = 'Dockerfile'
             def customImage = docker.build("sashokpy:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
-                               }
+           }
      //  customImage.push()
        }
 //    def dockerfile = 'Dockerfile'
