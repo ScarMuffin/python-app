@@ -5,7 +5,8 @@ node {
         env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
     stage('Building image'){
-      kubernetes.image().withName("example").build().fromPath(".")
+       def dockerfile = 'Dockerfile'
+       def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./") 
 //    def dockerfile = 'Dockerfile'
 //    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./") 
     }
