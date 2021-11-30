@@ -10,8 +10,10 @@ node ('jenkins-docker'){
     }
     stage('Building image'){
        container('docker') {
+       docker.withRegistry('https://sashok.jfrog.io/default-docker-virtual/', 'jfrog')
        def dockerfile = 'Dockerfile'
        def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
+       customImage.push()
        }
 //    def dockerfile = 'Dockerfile'
 //    def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./") 
