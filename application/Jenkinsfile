@@ -1,4 +1,13 @@
-node ('jenkins-docker'){
+node(POD_LABEL) {
+    git 'https://github.com/nginxinc/docker-nginx.git'
+    container('docker') {
+    sh 'docker version && cd stable/alpine/ && docker build -t nginx-example .'
+    }
+}
+
+
+
+/*node ('jenkins-docker'){
     checkout scm
      stage('Initialize'){
 //        def dockerHome = tool 'myDocker'
