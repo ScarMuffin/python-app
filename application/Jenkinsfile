@@ -1,4 +1,4 @@
-node ('jenkins-docker') {
+node {
     checkout scm
      stage('Initialize'){
         def dockerHome = tool 'myDocker'
