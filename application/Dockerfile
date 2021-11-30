@@ -1,7 +1,7 @@
 FROM python:3.6-alpine
 
 RUN adduser --disabled-password sashok
-COPY . /
+COPY . .
 
 RUN pip install -r requirements.txt
 
