@@ -2,6 +2,7 @@ node ('jenkins-docker'){
     checkout scm
         stage('Install helm') {
         /* This installs helm client */
+          sh 'export HELM_DRIVER=configmap'
           sh "curl -O https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz"
           sh "tar -xvf helm-v3.7.1-linux-amd64.tar.gz"
           sh "chmod 777 ./linux-amd64/helm"
