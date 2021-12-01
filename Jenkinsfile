@@ -7,7 +7,7 @@ node ('jenkins-docker'){
           sh "chmod 777 ./linux-amd64/helm"
           sh "./linux-amd64/helm version"
     }
-    stage('Building image and push') {
+  /*  stage('Building image and push') {
        container('docker') {
            docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
             def dockerfile = 'Dockerfile'
@@ -15,7 +15,7 @@ node ('jenkins-docker'){
             customImage.push()
            }
        }
-    }
+    }*/
         stage('Deploy chart pulling from Artifactory') {
             
         sh "./linux-amd64/helm repo add hello https://www.kleinloog.ch/hello-helm/"
