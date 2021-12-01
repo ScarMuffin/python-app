@@ -1,6 +1,7 @@
 node ('jenkins-docker'){
     checkout scm
         stage('Install helm') {
+            container('docker') {
         /* This installs helm client */
           sh 'sudo apt-get update'
           sh 'sudo apt-get install -y apt-transport-https ca-certificates curl'
@@ -13,6 +14,7 @@ node ('jenkins-docker'){
           sh "tar -xvf helm-v3.7.1-linux-amd64.tar.gz"
           sh "chmod 777 ./linux-amd64/helm"
           sh "./linux-amd64/helm version"
+            }
     }
   /*  stage('Building image and push') {
        container('docker') {
