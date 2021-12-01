@@ -3,12 +3,12 @@ node ('jenkins-docker'){
         stage('Install helm') {
             container('docker') {
         /* This installs helm client */
-          sh 'sudo apt-get update'
-          sh 'sudo apt-get install -y apt-transport-https ca-certificates curl'
-          sh 'sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg'
-          sh 'sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list'
-          sh 'sudo apt-get update'
-          sh 'sudo apt-get install -y kubectl'
+          sh 'apt-get update'
+          sh 'apt-get install -y apt-transport-https ca-certificates curl'
+          sh 'curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg'
+          sh 'echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list'
+          sh 'apt-get update'
+          sh 'apt-get install -y kubectl'
           sh 'export HELM_DRIVER=configmap'
           sh "curl -O https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz"
           sh "tar -xvf helm-v3.7.1-linux-amd64.tar.gz"
