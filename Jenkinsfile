@@ -11,8 +11,10 @@ node ('jenkins-docker'){
        }
     }
         stage('Deploy chart pulling from Artifactory') {
+           container('docker') {
           docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
                 kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubeconfig")
           }
-         }
+        }
+     }
 }
