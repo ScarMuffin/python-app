@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: sashokpy
-        image: *sashokapp-application-version*
+        image: sashok.jfrog.io/default-docker-virtual/sashokpy:buildversion
         ports:
         - containerPort: 8080
         resources:
