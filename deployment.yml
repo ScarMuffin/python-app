@@ -1,3 +1,12 @@
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJzYXNob2suamZyb2cuaW8iOnsidXNlcm5hbWUiOiJ2YWxreXJoaWtsZXNvbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IkwjUXVAR1kyZ3FEUnRwZCIsImVtYWlsIjoidmFsa3lyaGlrbGVzb25AZ21haWwuY29tIiwiYXV0aCI6ImRtRnNhM2x5YUdscmJHVnpiMjVBWjIxaGFXd3VZMjl0T2t3alVYVkFSMWt5WjNGRVVuUndaQT09In19fQ==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: sashoksecret
+type: kubernetes.io/dockerconfigjson
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
