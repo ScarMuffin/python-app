@@ -72,20 +72,3 @@ spec:
   type: ClusterIP
 status:
   loadBalancer: {}
----
-apiVersion: extensions/v1
-kind: Ingress
-metadata:
-  name: sashok-ingress
-spec:
-  rules:
-  - host: sashok-app.dvrt.xyz
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: sashok-service
-            port:
-              number: 8080
