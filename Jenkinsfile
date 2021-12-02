@@ -1,5 +1,5 @@
 node ('jenkins-docker'){
-w    checkout scm
+   checkout scm
     
    stage('Building image and push') {
        container('docker') {
