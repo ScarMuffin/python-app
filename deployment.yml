@@ -73,7 +73,7 @@ spec:
 status:
   loadBalancer: {}
 ---
-apiVersion: v1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   name: sashok-ingress
