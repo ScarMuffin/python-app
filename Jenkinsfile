@@ -1,45 +1,5 @@
-pipeline {
-
-  environment {
-    dockerimagename = "derskiy/application"
-    dockerImage = ""
-  }
-
-     agent {
-    kubernetes { 
-        yaml ''' 
-    apiVersion: v1
-    kind: Pod
-    spec:
-     containers:    
-     - name: docker
-       image: docker:19.03.1-dind
-       securityContext:
-         privileged: true  
-        '''
-      defaultContainer 'docker'
-    }      
-}
-
-  stages {
-
-   
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubeconfig")
-        }
-      }
-    }
-  }
-}
-
-
-
-
-
-/*node ('jenkins-docker'){
-    checkout scm
+node ('jenkins-docker'){
+w    checkout scm
     
    stage('Building image and push') {
        container('docker') {
@@ -51,6 +11,8 @@ pipeline {
        }
     }
         stage('Deploy chart pulling from Artifactory') {
+          docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
                 kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "kubeconfig")
-            }
-}*/
+          }
+         }
+}
