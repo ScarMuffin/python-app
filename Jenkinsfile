@@ -5,7 +5,8 @@ node ('jenkins-docker'){
        container('docker') {
            docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("default-docker-virtual/sashokpy:${env.BUILD_ID}", "-f ${dockerfile} ./application") 
+            def customImage = docker.build("default-docker-virtual/sashokpy:${env.BUILD_ID}", "-f ${dockerfile} ./application")
+            sh "sed -i 's/default-docker-virtual\/sashokpy:version/default-docker-virtual\/sashokpy:${env.BUILD_ID}/g' deployment.yml"
             customImage.push()
            }
        }
