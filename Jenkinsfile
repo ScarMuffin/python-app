@@ -1,7 +1,7 @@
 node ('jenkins-docker'){
     checkout scm
     
-   stage('Building image and push') {
+/*   stage('Building image and push') {
        container('docker') {
            docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
             def dockerfile = 'Dockerfile'
@@ -9,7 +9,7 @@ node ('jenkins-docker'){
             customImage.push()
            }
        }
-    }
+    }*/
         stage('Deploy chart pulling from Artifactory') {
             container('docker') {
             docker.withRegistry('https://sashok.jfrog.io', 'jfrog') {
