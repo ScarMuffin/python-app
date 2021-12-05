@@ -15,7 +15,7 @@ async def health(request: web.Request):
 
 async def app_info(request: web.Request):
     return web.Response(
-        body="New Sashok app commit Hostname: {}. Version: {}".format(
+        body="New app commit Hostname: {}. Version: {}".format(
             HOSTNAME,
             VERSION,
         )
