@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sashok-alertmanager
+  namespace: monitoring
+spec:
+  rules:
+  - host: alertmanager.sashok.ln.ua
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: alertmanager-operated
+            port:
+              number: 9093
