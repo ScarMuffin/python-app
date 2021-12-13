@@ -15,7 +15,7 @@ async def health(request: web.Request):
 
 async def app_info(request: web.Request):
     return web.Response(
-        body="Hello Playtika! Hostname: {}. Version: {}".format(
+        body="Hello Playwing! Hostname: {}. Version: {}".format(
             HOSTNAME,
             VERSION,
         )
